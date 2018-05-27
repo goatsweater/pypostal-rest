@@ -13,8 +13,9 @@ api = Api(app)
 class Parse(Resource):
     def get(self):
         query = request.args.get('query')
-        return parse_address(query)
-        #return {'query':query}
+        parsed = parse_address(query)
+        response = {key: value for (value, key) in parsed}
+        return response
 
 class Expand(Resource):
     def get(self):
