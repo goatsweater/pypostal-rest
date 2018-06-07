@@ -12,14 +12,14 @@ api = Api(app)
 
 class Parse(Resource):
     def get(self):
-        query = request.args.get('query')
+        query = request.args.get('address')
         parsed = parse_address(query)
         response = {key: value for (value, key) in parsed}
         return response
 
 class Expand(Resource):
     def get(self):
-        query = request.args.get('query')
+        query = request.args.get('address')
         return expand_address(query)
 
 api.add_resource(Parse, '/parse')
